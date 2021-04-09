@@ -1,0 +1,16 @@
+F:\PERKULIAHAN\OOP\gate_prjct\bin\Debug\net5.0\gate_prjct.exe
+F:\PERKULIAHAN\OOP\gate_prjct\bin\Debug\net5.0\gate_prjct.deps.json
+F:\PERKULIAHAN\OOP\gate_prjct\bin\Debug\net5.0\gate_prjct.runtimeconfig.json
+F:\PERKULIAHAN\OOP\gate_prjct\bin\Debug\net5.0\gate_prjct.runtimeconfig.dev.json
+F:\PERKULIAHAN\OOP\gate_prjct\bin\Debug\net5.0\gate_prjct.dll
+F:\PERKULIAHAN\OOP\gate_prjct\bin\Debug\net5.0\ref\gate_prjct.dll
+F:\PERKULIAHAN\OOP\gate_prjct\bin\Debug\net5.0\gate_prjct.pdb
+F:\PERKULIAHAN\OOP\gate_prjct\obj\Debug\net5.0\gate_prjct.csprojAssemblyReference.cache
+F:\PERKULIAHAN\OOP\gate_prjct\obj\Debug\net5.0\gate_prjct.GeneratedMSBuildEditorConfig.editorconfig
+F:\PERKULIAHAN\OOP\gate_prjct\obj\Debug\net5.0\gate_prjct.AssemblyInfoInputs.cache
+F:\PERKULIAHAN\OOP\gate_prjct\obj\Debug\net5.0\gate_prjct.AssemblyInfo.cs
+F:\PERKULIAHAN\OOP\gate_prjct\obj\Debug\net5.0\gate_prjct.csproj.CoreCompileInputs.cache
+F:\PERKULIAHAN\OOP\gate_prjct\obj\Debug\net5.0\gate_prjct.dll
+F:\PERKULIAHAN\OOP\gate_prjct\obj\Debug\net5.0\ref\gate_prjct.dll
+F:\PERKULIAHAN\OOP\gate_prjct\obj\Debug\net5.0\gate_prjct.pdb
+F:\PERKULIAHAN\OOP\gate_prjct\obj\Debug\net5.0\gate_prjct.genruntimeconfig.cache
