@@ -2,24 +2,25 @@ namespace gate_prjct
 {
     public class CKBudha: AKerajaan
     {
-        private static int totalData = 0;
-        private static string[] kArray = new string[100];
-        private string fileName = "kerajaanBudha";
-        private static string workfile;
-        public void setData(){
-            workspace work = new workspace();
-            workfile = work.workspaces+fileName+".txt";
-            setArray(kArray, workfile);
-            showArray(kArray, totalData);
+        private string _kName;
+        private string _kLocation;
+        private int _kYear;
+        private string _kFounder;
+        public string kName{
+            get{return _kName;}
+            set{_kName = value;}
         }
-        public new void setArray(string[] kArray, string workspace){
-            base.setArray(kArray, workspace);
+        public string kLocation{
+            get{return _kLocation;}
+            set{_kLocation = value;}
         }
-        public new void showArray(string[] kArray, int count){
-            base.showArray(kArray, count);
+        public int kYear{
+            get{return _kYear;}
+            set{_kYear = value;}
         }
-        public string rWorkfile(){
-            return workfile;
+        public string kFounder{
+            get{return _kFounder;}
+            set{_kFounder = value;}
         }
     }
 }

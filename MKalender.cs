@@ -1,7 +1,7 @@
 using System;
 namespace gate_prjct
 {
-    public class CKalender
+    public class MKalender
     {
         public void menu(){
             int option = 0;
@@ -17,7 +17,7 @@ namespace gate_prjct
                         cek();
                         break;
                     case 2:
-                        baca();
+                        tampil();
                         break;
                     case 3:
                         tulis();
@@ -30,9 +30,9 @@ namespace gate_prjct
         private void cek(){
             CHBersejarah hari = new CHBersejarah();
         }
-        private void baca(){
+        private void tampil(){
             CDiary diary = new CDiary();
-            diary.baca();
+            diary.tampil();
         }
         private void tulis(){
             CDiary diary = new CDiary();
