@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 28 Apr 2021 pada 18.02
+-- Generation Time: 29 Apr 2021 pada 03.42
 -- Versi Server: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -33,6 +33,14 @@ CREATE TABLE `tbdiary` (
   `dContent` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data untuk tabel `tbdiary`
+--
+
+INSERT INTO `tbdiary` (`dId`, `dTitle`, `dDate`, `dContent`) VALUES
+(1, 'Hariku', '2001-01-01', 'cerah'),
+(2, 'Hari ini', '2001-01-01', 'dyjtd.ysdky,fh,fkuydghdh');
+
 -- --------------------------------------------------------
 
 --
@@ -60,11 +68,11 @@ INSERT INTO `tbhari` (`h_Id`, `h_title`, `h_content`, `h_date`) VALUES
 --
 
 CREATE TABLE `tbkbudha` (
-  `kb_Id` int(10) NOT NULL,
-  `kb_name` varchar(50) NOT NULL,
-  `kb_location` varchar(50) NOT NULL,
-  `kb_year` int(10) NOT NULL,
-  `lb_founder` varchar(50) NOT NULL
+  `kId` int(10) NOT NULL,
+  `kName` varchar(50) NOT NULL,
+  `kLocation` varchar(50) NOT NULL,
+  `kYear` int(10) NOT NULL,
+  `kFounder` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -74,11 +82,11 @@ CREATE TABLE `tbkbudha` (
 --
 
 CREATE TABLE `tbkhindu` (
-  `kh_Id` int(10) NOT NULL,
-  `kh_name` varchar(50) NOT NULL,
-  `kh_location` varchar(50) NOT NULL,
-  `kh_year` int(10) NOT NULL,
-  `kh_founder` varchar(50) NOT NULL
+  `kId` int(10) NOT NULL,
+  `kName` varchar(50) NOT NULL,
+  `kLocation` varchar(50) NOT NULL,
+  `kYear` int(10) NOT NULL,
+  `kFounder` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -88,11 +96,38 @@ CREATE TABLE `tbkhindu` (
 --
 
 CREATE TABLE `tbkislam` (
-  `ki_Id` int(10) NOT NULL,
-  `ki_name` varchar(50) NOT NULL,
-  `ki_location` varchar(50) NOT NULL,
-  `ki_year` int(10) NOT NULL,
-  `ki_founder` varchar(50) NOT NULL
+  `kId` int(10) NOT NULL,
+  `kName` varchar(50) NOT NULL,
+  `kLocation` varchar(50) NOT NULL,
+  `kYear` int(10) NOT NULL,
+  `kFounder` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tbraja`
+--
+
+CREATE TABLE `tbraja` (
+  `tId` int(11) NOT NULL,
+  `tName` varchar(50) NOT NULL,
+  `tKingdom` varchar(50) NOT NULL,
+  `tBirth` int(10) NOT NULL,
+  `tDie` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tbuser`
+--
+
+CREATE TABLE `tbuser` (
+  `id` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `level` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -115,19 +150,31 @@ ALTER TABLE `tbhari`
 -- Indexes for table `tbkbudha`
 --
 ALTER TABLE `tbkbudha`
-  ADD PRIMARY KEY (`kb_Id`);
+  ADD PRIMARY KEY (`kId`);
 
 --
 -- Indexes for table `tbkhindu`
 --
 ALTER TABLE `tbkhindu`
-  ADD PRIMARY KEY (`kh_Id`);
+  ADD PRIMARY KEY (`kId`);
 
 --
 -- Indexes for table `tbkislam`
 --
 ALTER TABLE `tbkislam`
-  ADD PRIMARY KEY (`ki_Id`);
+  ADD PRIMARY KEY (`kId`);
+
+--
+-- Indexes for table `tbraja`
+--
+ALTER TABLE `tbraja`
+  ADD PRIMARY KEY (`tId`);
+
+--
+-- Indexes for table `tbuser`
+--
+ALTER TABLE `tbuser`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -137,7 +184,7 @@ ALTER TABLE `tbkislam`
 -- AUTO_INCREMENT for table `tbdiary`
 --
 ALTER TABLE `tbdiary`
-  MODIFY `dId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `dId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `tbhari`
 --
@@ -147,17 +194,27 @@ ALTER TABLE `tbhari`
 -- AUTO_INCREMENT for table `tbkbudha`
 --
 ALTER TABLE `tbkbudha`
-  MODIFY `kb_Id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `kId` int(10) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tbkhindu`
 --
 ALTER TABLE `tbkhindu`
-  MODIFY `kh_Id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `kId` int(10) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tbkislam`
 --
 ALTER TABLE `tbkislam`
-  MODIFY `ki_Id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `kId` int(10) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tbraja`
+--
+ALTER TABLE `tbraja`
+  MODIFY `tId` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `tbuser`
+--
+ALTER TABLE `tbuser`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

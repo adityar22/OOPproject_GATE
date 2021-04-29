@@ -29,13 +29,16 @@ namespace gate_prjct
         }
 
         private void hindu(){
-
+            CKHindu hindu = new CKHindu();
+            hindu.tampil("tbkhindu");
         }
         private void budha(){
-
+            CKBudha budha = new CKBudha();
+            budha.tampil("tbkbudha");
         }
         private void islam(){
-
+            CKIslam islam = new CKIslam();
+            islam.tampil("tbkislam");
         }
     }
 }

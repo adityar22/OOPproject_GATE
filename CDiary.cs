@@ -35,14 +35,14 @@ namespace gate_prjct
             int i = cmd.ExecuteNonQuery();
             if(i>0){
                 Console.WriteLine("Diary Updated!");
-            }
+            }cmd.Cancel();
         }
         public void tampil(){
             connect data = new connect();
 
             MySqlCommand command = data.connection.CreateCommand();
             command.CommandText = CommandType.Text.ToString();
-            command.CommandText = "Select * from tbdiary;";
+            command.CommandText = "Select * from tbdiary";
 
             MySqlDataReader reader = command.ExecuteReader();
 
@@ -57,21 +57,28 @@ namespace gate_prjct
                 Console.WriteLine(dataview);
             }else{
                 Console.WriteLine("Diary tidak ditemukan");
-            }
+            }reader.Close();
         }
         public void baca(int id){
             connect data = new connect();
 
             MySqlCommand command = data.connection.CreateCommand();
             command.CommandText = CommandType.Text.ToString();
-            command.CommandText = "Select * from tbdiary where dId in("+id+")";
+            command.CommandText = "Select * from tbdiary where dId in('"+id+"')";
 
             MySqlDataReader reader = command.ExecuteReader();
 
             var dataview = "[dId]\t[dTitle]\n[dDate]\n[dContent]\n";
-            dataview = reader.GetInt32(3) +"\t"+reader.GetString(0)+"\n"+reader.GetDateTime(0)+"\n"+reader.GetString(0)+Environment.NewLine;
-
-            Console.WriteLine(dataview);
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                  dataview = reader.GetInt32(3) +"\t"+reader.GetString(0)+"\n"+reader.GetDateTime(0)+"\n"+reader.GetString(0)+Environment.NewLine;  
+                }
+                Console.WriteLine(dataview);
+            }else{
+                Console.WriteLine("Diary tidak ditemukan");
+            }reader.Close();
         }
     }
 }
