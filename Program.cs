@@ -22,8 +22,8 @@ namespace gate_prjct
                     int input = 0;
                     while (input != -1)
                     {
-                        Console.WriteLine("Menu GATE: (1)Menu Kalender; (2)cari kerajaan; (3)Cari Raja/Tokoh; (-1) Exit");
-                        Console.WriteLine("Input pilihanmu: ");
+                        Console.WriteLine("GATE's Menu: (1)Menu Calendar;\n (2)Menu Kingdom's Data;\n (3)Menu King's Data;\n (-1) Exit");
+                        Console.WriteLine("Input Your Choice: ");
                         input = Convert.ToInt32(Console.ReadLine());
                         switch (input)
                         {
@@ -41,6 +41,8 @@ namespace gate_prjct
                         }
                     }
                     data.connection.Close();
+                    Console.WriteLine("Connection is "+data.connection.State.ToString() + Environment.NewLine);
+                    Console.WriteLine("See you next time, Explorer!");
                 }
                 catch (MySql.Data.MySqlClient.MySqlException ex)
                 {
