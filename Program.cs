@@ -40,14 +40,14 @@ namespace gate_prjct
                                 break;
                         }
                     }
-
+                    data.connection.Close();
                 }
                 catch (MySql.Data.MySqlClient.MySqlException ex)
                 {
                     Console.WriteLine("You're not connected to GateDB\n");
                     Console.WriteLine("Error: "+ex.Message.ToString());
                 }finally{
-                    data.connection.Close();
+                    
                     Console.WriteLine("Press any key to exit...");
                     Console.ReadKey();
                 }
