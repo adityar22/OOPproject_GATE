@@ -11,7 +11,7 @@ namespace gate_prjct
         private string _firstname;
         private string _lastname;
         private string _email;
-        private int _age;
+        private int _level;
 
         public string username{
             get{return _username;}
@@ -37,9 +37,9 @@ namespace gate_prjct
             get{return _birth;}
             set{_birth = value;}
         }
-        public int age{
-            get{return _age;}
-            set{_age = value;}
+        public int level{
+            get{return _level;}
+            set{_level = value;}
         }
 
         public void login(string Username, string Password){
@@ -66,19 +66,20 @@ namespace gate_prjct
             lastname = Lastname;
             email = Email;
             birth = Birth;
+            level = 0;
 
             connect data = new connect();
             MLogin mlogin = new MLogin();
 
             MySqlCommand command = data.connection.CreateCommand();
             command.CommandText = CommandType.Text.ToString();
-            command.CommandText = "Select * from tbuser where username='"+Username+"'";
+            command.CommandText = "Select * from tbuser where username='"+Username+"' and email='"+Email+"'";
             MySqlDataReader cek = command.ExecuteReader();
             if (cek.HasRows)
             {
                 mlogin.failedsignup();
             }else{
-                MySqlCommand cmd = new MySqlCommand("Insert Into tbuser(username, password, firstname, lastname, email, birth) Values('"+username+"', '"+password+"', '"+firstname+"', '"+lastname+"', '"+email+"', '"+birth+"')", data.connection);
+                MySqlCommand cmd = new MySqlCommand("Insert Into tbuser(username, password, firstname, lastname, email, birth, level) Values('"+username+"', '"+password+"', '"+firstname+"', '"+lastname+"', '"+email+"', '"+birth+"', '"+level+"')", data.connection);
             int i = cmd.ExecuteNonQuery();
             if(i>0){
                 mlogin.successignup();
