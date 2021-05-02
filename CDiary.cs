@@ -80,5 +80,9 @@ namespace gate_prjct
                 Console.WriteLine("Diary tidak ditemukan");
             }reader.Close();
         }
+        public void delete(){
+            connect data = new connect();
+            
+        }
     }
 }

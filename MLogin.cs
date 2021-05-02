@@ -5,36 +5,54 @@ namespace gate_prjct
 {
     public class MLogin
     {
-        private string username;
-        private string password;
-        public string Username{
-            get{return username;}
-            set{username = value;}
-        }
-        public string Password{
-            get{return password;}
-            set{password = value;}
+        public void signorlogin(){
+            int option = 0;
+            Console.WriteLine("1) Login\n2) Signup\n3) Exit");
+            switch (option)
+            {
+                case 1:
+                    mlogin();
+                    break;
+                case 2:
+                    msignup();
+                    break;
+                case -1:
+                    break;
+                default:
+                    signorlogin();
+                    break;
+            }
+            
         }
         public void mlogin(){
-            connect data = new connect();
+            string Username;
+            string Password;
+            
             Console.WriteLine("Masukkan Username: ");
             Username = Console.ReadLine();
             Console.WriteLine("Masukkan Password: ");
             Password = Console.ReadLine();
+        }
+        public void failedlogin(){
+            Console.WriteLine("Login Gagal!");
+            mlogin();
+        }
+        public void succeslogin(){
+            Console.WriteLine("Login Berhasil!");
+            MMenu menu = new MMenu();
+            menu.menu();
+        }
+        public void msignup(){
 
-            MySqlCommand command = data.connection.CreateCommand();
-            command.CommandText = CommandType.Text.ToString();
-            command.CommandText = "Select * from tbuser where username='"+Username+"' and password='"+Password+"'";
-
-            MySqlDataReader login = command.ExecuteReader();
-            if(login.HasRows){
-                Console.WriteLine("Login Berhasil!");
-            }else{
-                Console.WriteLine("Login Gagal!");
-                command.Cancel();
-                login.Close();
-                mlogin();
-            }
+        }
+        public void failedsignup(){
+            Console.WriteLine("Username atau email telah terdaftar!");
+            msignup();
+        }
+        public void successignup(){
+            Console.WriteLine("Your account registered!");
+            Console.WriteLine("Please login your account");
+            mlogin();
         }
     }
 }

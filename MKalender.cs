@@ -48,5 +48,9 @@ namespace gate_prjct
             find.keyword = Console.ReadLine();
             find.search("tdiary", "dTitle", "dId");
         }
+        private void hapus(){
+            CDiary diary = new CDiary();
+            diary.delete();
+        }
     }
 }
