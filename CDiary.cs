@@ -20,69 +20,23 @@ namespace gate_prjct
             get{return _date;}
             set{_date = value;}
         }
-        public void tulis(){
-            Console.WriteLine("Masukkan judul diary: ");
-            judul = Console.ReadLine();
-            Console.WriteLine("Tuliskan diary: ");
-            konten = Console.ReadLine();
-
-            date_type dat = new date_type();
-            date = dat.today;
-
+        public void tulis(string judul, string konten){
             connect data = new connect();
 
-            MySqlCommand cmd = new MySqlCommand("Insert Into tbdiary(dTitle, dDate, dContent) Values('"+judul+"', '"+date+"', '"+konten+"')", data.connection);
+            MySqlCommand cmd = new MySqlCommand("Insert Into tbdiary(dTitle, dDate, dContent) Values('"+judul+"', @1, '"+konten+"')", data.connection);
+            cmd.Parameters.AddWithValue("@1", DateTime.Now);
             int i = cmd.ExecuteNonQuery();
             if(i>0){
-                Console.WriteLine("Diary Updated!");
-            }cmd.Cancel();
-        }
-        public void tampil(){
-            connect data = new connect();
-
-            MySqlCommand command = data.connection.CreateCommand();
-            command.CommandText = CommandType.Text.ToString();
-            command.CommandText = "Select * from tbdiary";
-
-            MySqlDataReader reader = command.ExecuteReader();
-
-            var dataview = "[dId]\t[dTitle]\t[dDate]n";
-
-            if (reader.HasRows)
-            {
-                while (reader.Read())
-                {
-                    dataview = reader.GetInt32(3) +"\t"+reader.GetString(0)+"\n"+reader.GetDateTime(0)+"\n"+reader.GetString(0)+Environment.NewLine;
-                }
-                Console.WriteLine(dataview);
-            }else{
-                Console.WriteLine("Diary tidak ditemukan");
-            }reader.Close();
-        }
-        public void baca(int id){
-            connect data = new connect();
-
-            MySqlCommand command = data.connection.CreateCommand();
-            command.CommandText = CommandType.Text.ToString();
-            command.CommandText = "Select * from tbdiary where dId in('"+id+"')";
-
-            MySqlDataReader reader = command.ExecuteReader();
-
-            var dataview = "[dId]\t[dTitle]\n[dDate]\n[dContent]\n";
-            if (reader.HasRows)
-            {
-                while (reader.Read())
-                {
-                  dataview = reader.GetInt32(3) +"\t"+reader.GetString(0)+"\n"+reader.GetDateTime(0)+"\n"+reader.GetString(0)+Environment.NewLine;  
-                }
-                Console.WriteLine(dataview);
-            }else{
-                Console.WriteLine("Diary tidak ditemukan");
-            }reader.Close();
+                MKalender calendar = new MKalender();
+                calendar.successupdate();
+            }
+            cmd.Cancel();
         }
         public void delete(){
-            connect data = new connect();
             
+        }
+        public void update(){
+
         }
     }
 }

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 29 Apr 2021 pada 03.42
+-- Generation Time: 03 Mei 2021 pada 09.01
 -- Versi Server: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -124,9 +124,12 @@ CREATE TABLE `tbraja` (
 --
 
 CREATE TABLE `tbuser` (
-  `id` int(11) NOT NULL,
-  `username` varchar(50) NOT NULL,
+  `username` varchar(25) NOT NULL,
   `password` varchar(50) NOT NULL,
+  `firstname` varchar(50) NOT NULL,
+  `lastname` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `birth` date NOT NULL,
   `level` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -174,7 +177,7 @@ ALTER TABLE `tbraja`
 -- Indexes for table `tbuser`
 --
 ALTER TABLE `tbuser`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`username`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -210,11 +213,6 @@ ALTER TABLE `tbkislam`
 --
 ALTER TABLE `tbraja`
   MODIFY `tId` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `tbuser`
---
-ALTER TABLE `tbuser`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

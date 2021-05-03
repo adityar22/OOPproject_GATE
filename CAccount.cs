@@ -83,7 +83,8 @@ namespace gate_prjct
             }else{
                 command.Cancel();
                 cek.Close();
-                MySqlCommand cmd = new MySqlCommand("Insert Into tbuser(username, password, firstname, lastname, email, birth, level) Values('"+username+"', '"+password+"', '"+firstname+"', '"+lastname+"', '"+email+"', '"+birth+"', '"+level+"')", data.connection);
+                MySqlCommand cmd = new MySqlCommand("Insert Into tbuser(username, password, firstname, lastname, email, birth, level) Values('"+username+"', '"+password+"', '"+firstname+"', '"+lastname+"', '"+email+"', @1, '"+level+"')", data.connection);
+                cmd.Parameters.AddWithValue("@1", birth);
                 int i = cmd.ExecuteNonQuery();
                 if(i>0){
                     mlogin.successignup();

@@ -30,8 +30,8 @@ namespace gate_prjct
                 {
                     Console.WriteLine("You're not connected to GateDB\n");
                     Console.WriteLine("Error: "+ex.Message.ToString());
-                }finally{
-                    
+                }
+                finally{
                     Console.WriteLine("Press any key to exit...");
                     Console.ReadKey();
                 }
