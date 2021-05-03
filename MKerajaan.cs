@@ -1,4 +1,7 @@
 using System;
+using System.Data;
+using MySql.Data.MySqlClient;
+
 namespace gate_prjct
 {
     public class MKerajaan
@@ -8,8 +11,8 @@ namespace gate_prjct
             while (option != -1)
             {
                 Console.WriteLine("Menu Kerajaan");
-                Console.WriteLine("Menu: (1)Kerajaan Hindu; (2)Kerajaan Budha; (3)Kerajaan Islam; (-1)kembali");
-                Console.WriteLine("Input pilihan: ");
+                Console.WriteLine("1) Kerajaan Hindu\n2) Kerajaan Budha\n3) Kerajaan Islam\n-1) Back");
+                Console.WriteLine("Input your choice: ");
                 option = Convert.ToInt32(Console.ReadLine());
                 switch (option)
                 {
@@ -30,15 +33,80 @@ namespace gate_prjct
 
         private void hindu(){
             CKHindu hindu = new CKHindu();
-            hindu.tampil("tbkhindu");
+
+            int option = 0;
+            Console.WriteLine("1) Tambah Data\n2) Baca Data\n-1) Back");
+            switch (option)
+            {
+                case 1:
+                    adddata();
+                    break;
+                case 2:
+                    showdata("tbkhindu");
+                    break;
+                default:
+                    break;
+            }
         }
         private void budha(){
             CKBudha budha = new CKBudha();
-            budha.tampil("tbkbudha");
+            
+            int option = 0;
+            Console.WriteLine("1) Tambah Data\n2) Baca Data\n-1) Back");
+            switch (option)
+            {
+                case 1:
+                    adddata();
+                    break;
+                case 2:
+                    showdata("tbkbudha");
+                    break;
+                default:
+                    break;
+            }
         }
         private void islam(){
             CKIslam islam = new CKIslam();
-            islam.tampil("tbkislam");
+            
+            int option = 0;
+            Console.WriteLine("1) Tambah Data\n2) Baca Data\n-1) Back");
+            switch (option)
+            {
+                case 1:
+                    adddata();
+                    break;
+                case 2:
+                    showdata("tbkislam");
+                    break;
+                default:
+                    break;
+            }
+        }
+        private void showdata(string tabel){
+            connect data = new connect();
+
+            MySqlCommand command = data.connection.CreateCommand();
+            command.CommandText = CommandType.Text.ToString();
+            command.CommandText = "Select * from "+tabel;
+
+            MySqlDataReader reader = command.ExecuteReader();
+            var datview = "[kId]\t[kName]";
+
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    datview = reader.GetInt32(3)+"\t"+reader.GetString(0)+Environment.NewLine;
+                }
+                Console.WriteLine(datview);
+            }else{
+                Console.WriteLine("Data Tidak Ditemukan!");
+            }
+            command.Cancel();
+            reader.Close();
+        }
+        private void adddata(){
+
         }
     }
 }

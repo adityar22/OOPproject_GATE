@@ -22,8 +22,5 @@ namespace gate_prjct
             get{return _kFounder;}
             set{_kFounder = value;}
         }
-        public new void tampil(string tabel){
-            base.tampil(tabel);
-        }
     }
 }

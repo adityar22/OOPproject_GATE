@@ -1,4 +1,7 @@
 using System;
+using System.Data;
+using MySql.Data.MySqlClient;
+
 namespace gate_prjct
 {
     public class MTokoh
@@ -25,12 +28,33 @@ namespace gate_prjct
             }
         }
         private void raja(){
-            CRaja raja = new CRaja();
-            raja.tampil("tbraja");
+            
         }
         private void tokoh(){
-            CTokohLain tokoh = new CTokohLain();
-            tokoh.tampil("tbtokoh");
+            
+        }
+        private void showdata(string tabel){
+            connect data = new connect();
+
+            MySqlCommand command = data.connection.CreateCommand();
+            command.CommandText = CommandType.Text.ToString();
+            command.CommandText = "Select * from "+tabel;
+
+            MySqlDataReader reader = command.ExecuteReader();
+            var datview = "[tId]\t[tName]";
+
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    datview = reader.GetInt32(3)+"\t"+reader.GetString(0)+Environment.NewLine;
+                }
+                Console.WriteLine(datview);
+            }else{
+                Console.WriteLine("Data Tidak Ditemukan!");
+            }
+            command.Cancel();
+            reader.Close();
         }
     }
 }

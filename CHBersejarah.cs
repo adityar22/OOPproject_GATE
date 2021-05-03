@@ -27,7 +27,13 @@ namespace gate_prjct
             MySqlCommand command = data.connection.CreateCommand();
             command.CommandText = CommandType.Text.ToString();
             command.CommandText = "Select * from tbhari where hDate in ("+Date+")";
-            var datview = Date;
+
+            MySqlDataReader cek = command.ExecuteReader();
+            var datview = "[hName]";
+            if (cek.HasRows)
+            {
+                datview = cek.GetString(0);
+            }
             string day = datview.ToString();
             return day;
         }

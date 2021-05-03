@@ -77,13 +77,17 @@ namespace gate_prjct
             MySqlDataReader cek = command.ExecuteReader();
             if (cek.HasRows)
             {
+                command.Cancel();
+                cek.Close();
                 mlogin.failedsignup();
             }else{
+                command.Cancel();
+                cek.Close();
                 MySqlCommand cmd = new MySqlCommand("Insert Into tbuser(username, password, firstname, lastname, email, birth, level) Values('"+username+"', '"+password+"', '"+firstname+"', '"+lastname+"', '"+email+"', '"+birth+"', '"+level+"')", data.connection);
-            int i = cmd.ExecuteNonQuery();
-            if(i>0){
-                mlogin.successignup();
-            }cmd.Cancel();
+                int i = cmd.ExecuteNonQuery();
+                if(i>0){
+                    mlogin.successignup();
+                }cmd.Cancel();
             }
         }
     }
