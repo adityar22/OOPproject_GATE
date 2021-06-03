@@ -18,6 +18,7 @@ namespace gate_prjct
 
                     date_type date = new date_type();
                     date.date();
+                    Console.WriteLine(date.datetext);
                     
                     MLogin login = new MLogin();
                     login.signorlogin();

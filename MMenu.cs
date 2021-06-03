@@ -7,7 +7,7 @@ namespace gate_prjct
             int input = 0;
                 while (input != -1)
                 {
-                    Console.WriteLine("GATE's Menu: (1)Menu Calendar;\n (2)Menu Kingdom's Data;\n (3)Menu King's Data;\n (-1) Exit");
+                    Console.WriteLine("GATE's Menu:\n (1)Diary & Calendar;\n (2)Kingdom's Data;\n (3)King's Data;\n (-1) Exit");
                     Console.WriteLine("Input Your Choice: ");
                     input = Convert.ToInt32(Console.ReadLine());
                     switch (input)

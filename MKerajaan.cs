@@ -10,8 +10,8 @@ namespace gate_prjct
             int option = 0;
             while (option != -1)
             {
-                Console.WriteLine("Menu Kerajaan");
-                Console.WriteLine("1) Kerajaan Hindu\n2) Kerajaan Budha\n3) Kerajaan Islam\n-1) Back");
+                Console.WriteLine("Nusantara's Kingdoms Menu:");
+                Console.WriteLine("1) Hindu's Era Kingdom\n2) Budha's Era Kingdom\n3) Islamic Era Kingdom\n-1) Back");
                 Console.WriteLine("Input your choice: ");
                 option = Convert.ToInt32(Console.ReadLine());
                 switch (option)

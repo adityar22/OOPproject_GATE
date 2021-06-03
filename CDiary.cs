@@ -32,11 +32,26 @@ namespace gate_prjct
             }
             cmd.Cancel();
         }
-        public void delete(){
-            
-        }
-        public void update(){
+        public void delete(int id){
+            connect data = new connect();
 
+            MySqlCommand cmd = new MySqlCommand("Delete from tbdiary where dId = '"+id+"'", data.connection);
+            int i = cmd.ExecuteNonQuery();
+            if(i>0){
+                MKalender calendar = new MKalender();
+                calendar.successdelete();
+            }
+        }
+        public void update(int id, string content){
+            connect data = new connect();
+
+            MySqlCommand cmd = new MySqlCommand("Update tbdiary set dContent = '"+content+"' where dId = '"+id+"'", data.connection);
+            int i = cmd.ExecuteNonQuery();
+            if(i>0){
+                MKalender calendar = new MKalender();
+                calendar.successupdate();
+            }
+            cmd.Cancel();
         }
     }
 }

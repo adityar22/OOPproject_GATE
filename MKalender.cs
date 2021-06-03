@@ -95,15 +95,21 @@ namespace gate_prjct
             find.keyword = Console.ReadLine();
             find.search("tdiary", "dTitle", "dId");
         }
-        private void hapus(){
+        private void hapus(int id){
             CDiary diary = new CDiary();
-            diary.delete();
+            diary.delete(id);
         }
-        private void update(){
-
+        private void update(int id){
+            CDiary diary = new CDiary();
+            Console.WriteLine("Input new content: ");
+            string content = Console.ReadLine();
+            diary.update(id, content);
         }
         public void successupdate(){
             Console.WriteLine("Diary Updated!");
+        }
+        public void successdelete(){
+            Console.WriteLine("Diary Deleted!");
         }
     }
 }

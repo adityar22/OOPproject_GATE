@@ -87,8 +87,10 @@ namespace gate_prjct
                 cmd.Parameters.AddWithValue("@1", birth);
                 int i = cmd.ExecuteNonQuery();
                 if(i>0){
+                    cmd.Cancel();
                     mlogin.successignup();
-                }cmd.Cancel();
+                }
+                cmd.Cancel();
             }
         }
     }

@@ -3,10 +3,15 @@ namespace gate_prjct
 {
     public class date_type
     {
+        private string _datetext;
         private DateTime _today;
         public DateTime today{
             get{return _today;}
             set{_today = value;}
+        }
+        public string datetext{
+            get{return _datetext;}
+            set{_datetext = value;}
         }
         public void date(){
             today = DateTime.Now;
@@ -58,7 +63,7 @@ namespace gate_prjct
                 default:
                     break;
             }            
-            Console.WriteLine(day+", "+date+" "+month2+" "+year);
+            datetext = day+", "+date+" "+month2+" "+year;
         }
     }
 }
