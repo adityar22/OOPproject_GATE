@@ -41,7 +41,6 @@ namespace gate_prjct
             get{return _level;}
             set{_level = value;}
         }
-
         public void login(string Username, string Password){
             connect data = new connect();
             MLogin mlogin = new MLogin();
@@ -52,7 +51,9 @@ namespace gate_prjct
 
             MySqlDataReader login = command.ExecuteReader();
             if(login.HasRows){
-                mlogin.succeslogin();
+                command.Cancel();
+                login.Close();
+                mlogin.succeslogin(Username);
             }else{
                 command.Cancel();
                 login.Close();

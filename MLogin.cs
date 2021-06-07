@@ -8,22 +8,28 @@ namespace gate_prjct
         public void signorlogin(){
             int option = 0;
             Console.WriteLine("1) Login\n2) Signup\n-1) Exit");
-            Console.WriteLine("Input your choice: ");
-            option = Convert.ToInt32(Console.ReadLine());
-            switch (option)
-            {
-                case 1:
-                    mlogin();
-                    break;
-                case 2:
-                    msignup();
-                    break;
-                case -1:
-                    break;
-                default:
-                    signorlogin();
-                    break;
-            }
+            try{
+                Console.WriteLine("Input your choice: ");
+                option = Convert.ToInt32(Console.ReadLine());
+                switch (option)
+                {
+                    case 1:
+                        mlogin();
+                        break;
+                    case 2:
+                        msignup();
+                        break;
+                    case -1:
+                        break;
+                    default:
+                        signorlogin();
+                        break;
+                }
+            }catch{
+                Console.WriteLine("Please input a valid option");
+                signorlogin();
+            }  
+            
             
         }
         public void mlogin(){
@@ -39,7 +45,7 @@ namespace gate_prjct
             Console.WriteLine("Login Gagal!");
             mlogin();
         }
-        public void succeslogin(){
+        public void succeslogin(string user){
             Console.WriteLine("Login Berhasil!");
             
             MMenu menu = new MMenu();

@@ -27,7 +27,7 @@ namespace gate_prjct
             cmd.Parameters.AddWithValue("@1", DateTime.Now);
             int i = cmd.ExecuteNonQuery();
             if(i>0){
-                MKalender calendar = new MKalender();
+                MDiary calendar = new MDiary();
                 calendar.successupdate();
             }
             cmd.Cancel();
@@ -38,7 +38,7 @@ namespace gate_prjct
             MySqlCommand cmd = new MySqlCommand("Delete from tbdiary where dId = '"+id+"'", data.connection);
             int i = cmd.ExecuteNonQuery();
             if(i>0){
-                MKalender calendar = new MKalender();
+                MDiary calendar = new MDiary();
                 calendar.successdelete();
             }
         }
@@ -48,7 +48,7 @@ namespace gate_prjct
             MySqlCommand cmd = new MySqlCommand("Update tbdiary set dContent = '"+content+"' where dId = '"+id+"'", data.connection);
             int i = cmd.ExecuteNonQuery();
             if(i>0){
-                MKalender calendar = new MKalender();
+                MDiary calendar = new MDiary();
                 calendar.successupdate();
             }
             cmd.Cancel();

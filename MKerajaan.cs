@@ -17,69 +17,17 @@ namespace gate_prjct
                 switch (option)
                 {
                     case 1:
-                        hindu();
+                        showdata("tbkhindu");
                         break;
                     case 2:
-                        budha();
+                        showdata("tbkbudha");
                         break;
                     case 3:
-                        islam();
+                        showdata("tbkislam");
                         break;
                     default:
                         break;
                 } 
-            }
-        }
-
-        private void hindu(){
-            CKHindu hindu = new CKHindu();
-
-            int option = 0;
-            Console.WriteLine("1) Tambah Data\n2) Baca Data\n-1) Back");
-            switch (option)
-            {
-                case 1:
-                    adddata();
-                    break;
-                case 2:
-                    showdata("tbkhindu");
-                    break;
-                default:
-                    break;
-            }
-        }
-        private void budha(){
-            CKBudha budha = new CKBudha();
-            
-            int option = 0;
-            Console.WriteLine("1) Tambah Data\n2) Baca Data\n-1) Back");
-            switch (option)
-            {
-                case 1:
-                    adddata();
-                    break;
-                case 2:
-                    showdata("tbkbudha");
-                    break;
-                default:
-                    break;
-            }
-        }
-        private void islam(){
-            CKIslam islam = new CKIslam();
-            
-            int option = 0;
-            Console.WriteLine("1) Tambah Data\n2) Baca Data\n-1) Back");
-            switch (option)
-            {
-                case 1:
-                    adddata();
-                    break;
-                case 2:
-                    showdata("tbkislam");
-                    break;
-                default:
-                    break;
             }
         }
         private void showdata(string tabel){
@@ -96,7 +44,7 @@ namespace gate_prjct
             {
                 while (reader.Read())
                 {
-                    datview = reader.GetInt32(3)+"\t"+reader.GetString(0)+Environment.NewLine;
+                    datview = reader.GetInt32(0)+"\t"+reader.GetString(1)+Environment.NewLine;
                 }
                 Console.WriteLine(datview);
             }else{
@@ -105,8 +53,8 @@ namespace gate_prjct
             command.Cancel();
             reader.Close();
         }
-        private void adddata(){
-
+        private void showdetail(){
+            
         }
     }
 }

@@ -3,7 +3,7 @@ using System;
 using MySql.Data.MySqlClient;
 namespace gate_prjct
 {
-    public class CHBersejarah
+    public class CCalendar
     {
         private string _title;
         private DateTime _date;
