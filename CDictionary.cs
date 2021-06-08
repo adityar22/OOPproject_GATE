@@ -6,8 +6,8 @@ namespace gate_prjct
 {
     public class CDictionary
     {
-        private const string _url = "https://api.dictionaryapi.dev/api/v2/entries/en_US/";
-        private string _urlParam = "?api_key=123";
+        //private const string _url = "https://api.dictionaryapi.dev/api/v2/entries/en_US/";
+        //private string _urlParam = "?api_key=123";
         private string _word;
         private string _mean;
         private string[] _synonim =  new string[10];

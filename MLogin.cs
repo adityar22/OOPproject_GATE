@@ -24,7 +24,6 @@ namespace gate_prjct
                         exit.close();
                         break;
                     default:
-                        signorlogin();
                         break;
                 }
             }catch{
