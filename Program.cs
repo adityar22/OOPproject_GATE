@@ -19,13 +19,13 @@ namespace gate_prjct
                     date_type date = new date_type();
                     date.date();
                     Console.WriteLine(date.datetext);
+                    CCalendar calendar = new CCalendar(DateTime.Now);
+                    string schedule = calendar.checkSchedule();
+                    Console.WriteLine(schedule);
                     
                     MLogin login = new MLogin();
                     login.signorlogin();
 
-                    data.connection.Close();
-                    Console.WriteLine("Connection is "+data.connection.State.ToString() + Environment.NewLine);
-                    Console.WriteLine("See you next time, Explorer!");
                 }
                 catch (MySql.Data.MySqlClient.MySqlException ex)
                 {
@@ -37,6 +37,13 @@ namespace gate_prjct
                     Console.ReadKey();
                 }
             }  
+        }
+        public void close(){
+            connect data = new connect();
+            data.connection.Close();
+            Console.WriteLine("Connection is "+data.connection.State.ToString() + Environment.NewLine);
+            Console.WriteLine("Press any key to exit...");
+            Console.ReadKey();
         }
     }
 }

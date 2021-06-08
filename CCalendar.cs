@@ -20,25 +20,56 @@ namespace gate_prjct
             get{return _content;}
             set{_content = value;}
         }
+        public CCalendar(DateTime Date, string Title, string Content){
+            date = Date;
+            title = Title;
+            content = Content;
+        }
+        public CCalendar(DateTime Date){
+            date = Date;
+        }
+        public CCalendar(){}
         public void inSchedule(){
             connect data = new connect();
+            MySqlCommand cmd = new MySqlCommand("Insert Into tbhari(h_Title, h_Date, h_Content) Values('"+title+"', @1, '"+content+"')", data.connection);
+            cmd.Parameters.AddWithValue("@1", date);
+            int i = cmd.ExecuteNonQuery();
+            if(i>0){
+                MCalendar calendar = new MCalendar();
+                cmd.Cancel();
+                calendar.successupdate();
+            }
+            cmd.Cancel();
         }
         public string checkSchedule(){
             connect data = new connect();
             MySqlCommand command = data.connection.CreateCommand();
             command.CommandText = CommandType.Text.ToString();
-            command.CommandText = "Select * from tbhari where hDate in ("+date+")";
+            command.CommandText = "Select * from tbhari where h_Date in ('"+date+"')";
 
             MySqlDataReader check = command.ExecuteReader();
-            var datview = "[hID]\t[hName]";
+            var datview = "[h_Title]";
             if(check.HasRows){
                 datview = check.GetString(1);
+                title = datview.ToString();
+                command.Cancel();
+                check.Close();
+                return title;
+            }else{
+                command.Cancel();
+                check.Close();
+                return "You dont have any schedule today";
             }
-            title = datview.ToString();
-            return title;
         }
-        public string getDetail(){
-            return content;
+        public void deleteSchedule(int Id){
+            connect data = new connect();
+
+            MySqlCommand cmd = new MySqlCommand("Delete from tbhari where h_Id = '"+Id+"'", data.connection);
+            int i = cmd.ExecuteNonQuery();
+            if(i>0){
+                MCalendar calendar = new MCalendar();
+                calendar.successdelete();
+            }
         }
     }
 }

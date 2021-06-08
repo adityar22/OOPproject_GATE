@@ -20,6 +20,8 @@ namespace gate_prjct
                         msignup();
                         break;
                     case -1:
+                        Program exit = new Program();
+                        exit.close();
                         break;
                     default:
                         signorlogin();

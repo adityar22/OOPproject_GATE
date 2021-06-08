@@ -10,7 +10,7 @@ namespace gate_prjct
             while (option != -1)
             {
                 Console.WriteLine("Gate's Day Menu");
-                Console.WriteLine("1) Search Diary;\n2) Show List Diary;\n3) Write Diary;\n-1) Back");
+                Console.WriteLine("1) Write Diary;\n2) Search Diary\n3) Show List Diary;\n-1) Home");
                 try
                 {
                     Console.WriteLine("Input your choice: ");
@@ -18,16 +18,21 @@ namespace gate_prjct
                     switch (option)
                     {
                         case 1:
-                            searchDiary();
+                            writeDiary();
                             break;
                         case 2:
-                            showDiary();
+                            searchDiary();
                             break;
                         case 3:
-                            writeDiary();
+                            showDiary();
+                            break;
+                        case -1:
+                            MMenu mmenu = new MMenu();
+                            mmenu.menu();
                             break;
                         default:
                             Console.WriteLine("Input a valid option!");
+                            menu();
                             break;
                     } 
                 }
@@ -82,6 +87,7 @@ namespace gate_prjct
                     Console.WriteLine(dataview);
                 }
                 reader.Close();
+                Console.WriteLine("\n1)Get Details\n2)Rewrite Diary\n3)Delete Diary\n-1)Back to Menu");
                 menuDiary();
             }
             else{
@@ -90,7 +96,6 @@ namespace gate_prjct
             }
         }
         private void menuDiary(){
-            Console.WriteLine("\n1)Get Details\n2)Rewrite Diary\n3)Delete Diary\n-1)Back to Menu");
             int option = 0;
             try
             {
@@ -99,9 +104,7 @@ namespace gate_prjct
                     option = Convert.ToInt32(Console.ReadLine());
                     if(option != -1){
                         int diaryId;
-                        try
-                        {
-                            Console.WriteLine("Input diary's number: ");
+                        Console.WriteLine("Input diary's number: ");
                             diaryId = Convert.ToInt32(Console.ReadLine());
                             switch (option)
                             {
@@ -117,12 +120,7 @@ namespace gate_prjct
                                 default:
                                     Console.WriteLine("Please input a valid option");
                                     break;
-                            } 
-                        }
-                        catch
-                        {
-                            Console.WriteLine("Please input a valid number");
-                        }
+                            }
                     }else{
                         menu();
                     }
@@ -130,7 +128,7 @@ namespace gate_prjct
             }
             catch
             {
-                Console.WriteLine("Please input a valid option");
+                Console.WriteLine("Please input a valid input");
                 menuDiary();
             }
         }
