@@ -11,26 +11,33 @@ namespace gate_prjct
             {
                 Console.WriteLine("Gate's Day Menu");
                 Console.WriteLine("1) Search Diary;\n2) Show List Diary;\n3) Write Diary;\n-1) Back");
-                Console.WriteLine("Input your choice: ");
-                option = Convert.ToInt32(Console.ReadLine());
-                switch (option)
+                try
                 {
-                    case 1:
-                        cari();
-                        break;
-                    case 2:
-                        tampil();
-                        break;
-                    case 3:
-                        tulis();
-                        break;
-                    default:
-                        Console.WriteLine("Input a valid option!");
-                        break;
-                } 
+                    Console.WriteLine("Input your choice: ");
+                    option = Convert.ToInt32(Console.ReadLine());
+                    switch (option)
+                    {
+                        case 1:
+                            searchDiary();
+                            break;
+                        case 2:
+                            showDiary();
+                            break;
+                        case 3:
+                            writeDiary();
+                            break;
+                        default:
+                            Console.WriteLine("Input a valid option!");
+                            break;
+                    } 
+                }
+                catch
+                {
+                    Console.WriteLine("Please input a valid option");
+                }
             }
         }
-        private void cari(){
+        private void searchDiary(){
             Console.WriteLine("Masukkan keyword: ");
             string keyword = Console.ReadLine();
             
@@ -56,7 +63,7 @@ namespace gate_prjct
             command.Cancel();
             search.Close();
         }
-        private void tampil(){
+        private void showDiary(){
             connect data = new connect();
 
             MySqlCommand command = data.connection.CreateCommand();
@@ -71,15 +78,63 @@ namespace gate_prjct
             {
                 while (reader.Read())
                 {
-                    dataview = reader.GetInt32(0) +"\t"+reader.GetString(1)+"\t"+reader.GetDateTime(2)+"\t"+reader.GetString(3)+Environment.NewLine;
+                    dataview = reader.GetInt32(0) +"\t"+reader.GetString(1)+"\t"+reader.GetDateTime(2)+Environment.NewLine;
+                    Console.WriteLine(dataview);
                 }
-                Console.WriteLine(dataview);
+                reader.Close();
+                menuDiary();
             }
             else{
                 Console.WriteLine("Diary is Empty");
-            }reader.Close();
+                reader.Close();
+            }
         }
-        private void baca(int id){
+        private void menuDiary(){
+            Console.WriteLine("\n1)Get Details\n2)Rewrite Diary\n3)Delete Diary\n-1)Back to Menu");
+            int option = 0;
+            try
+            {
+                while(option != -1){
+                    Console.WriteLine("Input your choice: ");
+                    option = Convert.ToInt32(Console.ReadLine());
+                    if(option != -1){
+                        int diaryId;
+                        try
+                        {
+                            Console.WriteLine("Input diary's number: ");
+                            diaryId = Convert.ToInt32(Console.ReadLine());
+                            switch (option)
+                            {
+                                case 1:
+                                    readDiary(diaryId);
+                                    break;
+                                case 2:
+                                    rewriteDiary(diaryId);
+                                    break;
+                                case 3:
+                                    deleteDiary(diaryId);
+                                    break;
+                                default:
+                                    Console.WriteLine("Please input a valid option");
+                                    break;
+                            } 
+                        }
+                        catch
+                        {
+                            Console.WriteLine("Please input a valid number");
+                        }
+                    }else{
+                        menu();
+                    }
+                } 
+            }
+            catch
+            {
+                Console.WriteLine("Please input a valid option");
+                menuDiary();
+            }
+        }
+        private void readDiary(int id){
             connect data = new connect();
 
             MySqlCommand command = data.connection.CreateCommand();
@@ -93,14 +148,15 @@ namespace gate_prjct
             {
                 while (reader.Read())
                 {
-                  dataview = reader.GetInt32(3) +"\t"+reader.GetString(0)+"\n"+reader.GetDateTime(0)+"\n"+reader.GetString(0)+Environment.NewLine;  
+                  dataview = reader.GetInt32(0) +"\t"+reader.GetString(1)+"\n"+reader.GetDateTime(2)+"\n"+reader.GetString(3)+Environment.NewLine;  
                 }
+                reader.Close();
                 Console.WriteLine(dataview);
             }else{
                 Console.WriteLine("Diary's Id is invalid");
             }reader.Close();
         }
-        private void tulis(){
+        private void writeDiary(){
             Console.WriteLine("Input diary's title: ");
             string title = Console.ReadLine();
             Console.WriteLine("Input diary's content: ");
@@ -109,11 +165,11 @@ namespace gate_prjct
             CDiary diary = new CDiary();
             diary.tulis(title, content);
         }
-        private void hapus(int id){
+        private void deleteDiary(int id){
             CDiary diary = new CDiary();
             diary.delete(id);
         }
-        private void update(int id){
+        private void rewriteDiary(int id){
             CDiary diary = new CDiary();
             Console.WriteLine("Input new content: ");
             string content = Console.ReadLine();

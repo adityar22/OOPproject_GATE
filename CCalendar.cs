@@ -20,22 +20,25 @@ namespace gate_prjct
             get{return _content;}
             set{_content = value;}
         }
-
-        public string cekdate(DateTime Date){
+        public void inSchedule(){
             connect data = new connect();
-            
+        }
+        public string checkSchedule(){
+            connect data = new connect();
             MySqlCommand command = data.connection.CreateCommand();
             command.CommandText = CommandType.Text.ToString();
-            command.CommandText = "Select * from tbhari where hDate in ("+Date+")";
+            command.CommandText = "Select * from tbhari where hDate in ("+date+")";
 
-            MySqlDataReader cek = command.ExecuteReader();
-            var datview = "[hName]";
-            if (cek.HasRows)
-            {
-                datview = cek.GetString(0);
+            MySqlDataReader check = command.ExecuteReader();
+            var datview = "[hID]\t[hName]";
+            if(check.HasRows){
+                datview = check.GetString(1);
             }
-            string day = datview.ToString();
-            return day;
+            title = datview.ToString();
+            return title;
+        }
+        public string getDetail(){
+            return content;
         }
     }
 }

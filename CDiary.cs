@@ -28,6 +28,7 @@ namespace gate_prjct
             int i = cmd.ExecuteNonQuery();
             if(i>0){
                 MDiary calendar = new MDiary();
+                cmd.Cancel();
                 calendar.successupdate();
             }
             cmd.Cancel();
