@@ -5,9 +5,12 @@ namespace gate_prjct
 {
     public class MLogin
     {
+        public CAccount myaccount;
         public void signorlogin(){
             int option = 0;
-            Console.WriteLine("\n1) Login\n2) Signup\n-1) Exit");
+            Console.WriteLine("\n----------------------------------------------------");
+            Console.WriteLine("1) Login\n2) Signup\n-1) Exit");
+            Console.WriteLine("----------------------------------------------------\n");
             try{
                 Console.WriteLine("Input your choice: ");
                 option = Convert.ToInt32(Console.ReadLine());
@@ -25,34 +28,32 @@ namespace gate_prjct
                         Console.WriteLine("Please input a valid option");
                         break;
                 }
-            }catch{
-                Console.WriteLine("Please input a valid option");
+            }catch(Exception e){
+                Console.WriteLine("Error: "+e.ToString());
                 signorlogin();
             }  
-            
-            
         }
         public void mlogin(){
-            Console.WriteLine("Masukkan Username: ");
-            string username = Console.ReadLine();
-            Console.WriteLine("Masukkan Password: ");
-            string password = Console.ReadLine();
-
-            CAccount account = new CAccount();
-            account.login(username, password);
+            Console.WriteLine("\nInput Username: ");
+            string Username = Console.ReadLine();
+            Console.WriteLine("Input Password: ");
+            string Password = Console.ReadLine();
+            
+            myaccount = new CAccount(Username, Password);
+            myaccount.login();
         }
         public void failedlogin(){
             Console.WriteLine("Login Gagal!");
             mlogin();
         }
-        public void succeslogin(string user){
-            Console.WriteLine("Login Berhasil!");
+        public void succeslogin(){
+            Console.WriteLine("\nLogin Berhasil!");
             
             MMenu menu = new MMenu();
             menu.menu();
         }
         public void msignup(){
-            Console.WriteLine("Input your username: ");
+            Console.WriteLine("\nInput your username: ");
             string username = Console.ReadLine();
             Console.WriteLine("Input your firstname: ");
             string firstname = Console.ReadLine();
@@ -76,12 +77,12 @@ namespace gate_prjct
             account.signup(username, password, firstname, lastname, birth, email);
         }
         public void failedsignup(){
-            Console.WriteLine("Username atau email telah terdaftar!");
+            Console.WriteLine("\nUsername atau email telah terdaftar!\n");
             msignup();
         }
         public void successignup(){
-            Console.WriteLine("Your account registered!");
-            Console.WriteLine("Please login your account");
+            Console.WriteLine("\nYour account registered!");
+            Console.WriteLine("Please login your account\n");
             mlogin();
         }
     }

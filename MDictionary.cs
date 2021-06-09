@@ -4,9 +4,11 @@ namespace gate_prjct
     public class MDictionary
     {
         public void menu(){
-            Console.WriteLine("\nWelcome to Gate's Dictionary");
+            Console.WriteLine("\n----------------------------------------------------");
+            Console.WriteLine("Welcome to Gate's Dictionary");
             int option = 0;
             Console.WriteLine("\n1)Search word's means\n2)Serach word's synonim");
+            Console.WriteLine("----------------------------------------------------\n");
             while (option != -1)
             {
                 Console.WriteLine("Input your choice: ");

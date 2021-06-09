@@ -9,8 +9,10 @@ namespace gate_prjct
             int option = 0;
             while (option != -1)
             {
-                Console.WriteLine("\nGate's Day Menu");
+                Console.WriteLine("\n----------------------------------------------------");
+                Console.WriteLine("Gate's Day Menu");
                 Console.WriteLine("1) Write Diary;\n2) Search Diary\n3) Show List Diary;\n-1) Home");
+                Console.WriteLine("----------------------------------------------------\n");
                 try
                 {
                     Console.WriteLine("Input your choice: ");
@@ -75,7 +77,7 @@ namespace gate_prjct
             MySqlDataReader reader = command.ExecuteReader();
 
             var dataview = "[dId]\t[dTitle]\t[dDate]n";
-
+            
             if (reader.HasRows)
             {
                 while (reader.Read())
@@ -84,7 +86,7 @@ namespace gate_prjct
                     Console.WriteLine(dataview);
                 }
                 reader.Close();
-                Console.WriteLine("\n1)Get Details\n2)Rewrite Diary\n3)Delete Diary\n-1)Back to Menu");
+                Console.WriteLine("\n1)Get Details\n2)Rewrite Diary\n3)Delete Diary\n-1)Back to Menu\n");
                 menuDiary();
             }
             else{

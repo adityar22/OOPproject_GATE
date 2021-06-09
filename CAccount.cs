@@ -41,19 +41,24 @@ namespace gate_prjct
             get{return _level;}
             set{_level = value;}
         }
-        public void login(string Username, string Password){
+        public CAccount(){}
+        public CAccount(string Username, string Password){
+            username = Username;
+            password = Password;
+        }
+        public void login(){
             connect data = new connect();
             MLogin mlogin = new MLogin();
 
             MySqlCommand command = data.connection.CreateCommand();
             command.CommandText = CommandType.Text.ToString();
-            command.CommandText = "Select * from tbuser where username='"+Username+"' and password='"+Password+"'";
+            command.CommandText = "Select * from tbuser where username='"+username+"' and password='"+password+"'";
 
             MySqlDataReader login = command.ExecuteReader();
             if(login.HasRows){
                 command.Cancel();
                 login.Close();
-                mlogin.succeslogin(Username);
+                mlogin.succeslogin();
             }else{
                 command.Cancel();
                 login.Close();

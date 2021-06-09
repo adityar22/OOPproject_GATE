@@ -8,8 +8,10 @@ namespace gate_prjct
         public void menu(){
             int option = 0;
             while(option !=-1){
-                Console.WriteLine("\nGATE's Schedule Planner");
+                Console.WriteLine("\n----------------------------------------------------");
+                Console.WriteLine("GATE's Schedule Planner");
                 Console.WriteLine("1) Write Schedule\n2)Search Schedule\n-1)Home");
+                Console.WriteLine("----------------------------------------------------\n");
                 try
                 {
                     Console.WriteLine("Input your choice: ");
@@ -94,7 +96,7 @@ namespace gate_prjct
                 DateTime sDate = new DateTime(year, month, date);
 
                 showSchedule(sDate);
-                Console.WriteLine("1) Read Schedule\t2) Delete Schedule\t-1)Back to Menu");
+                Console.WriteLine("\n1) Read Schedule\t2) Delete Schedule\t-1)Back to Menu\n");
                 scheduleOption();
             }
             catch
@@ -165,10 +167,10 @@ namespace gate_prjct
             calendar.deleteSchedule(id);
         }
         public void successupdate(){
-            Console.WriteLine("Your schedule has updated!");
+            Console.WriteLine("\nYour schedule has updated!\n");
         }
         public void successdelete(){
-            Console.WriteLine("Your schedule has deleted!");
+            Console.WriteLine("\nYour schedule has deleted!\n");
         }
     }
 }
