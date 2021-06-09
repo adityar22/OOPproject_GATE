@@ -1,0 +1,8 @@
+[FIRST YOU NEED XAMPP INSTALLED IN YOUR DESKTOP]
+
+-Run xampp
+-Then in XAMPP Control Panel, run Apache and Mysql
+-Open localhost:/phpmyadmin in browser
+-Then click import on navbar in phpmyadmin window
+-Choose sql file
+-Click Send
