@@ -5,6 +5,7 @@ namespace gate_prjct
 {
     public class MCalendar
     {
+        public string uName;
         public void menu(){
             int option = 0;
             while(option !=-1){

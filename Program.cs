@@ -19,9 +19,6 @@ namespace gate_prjct
                     date_type date = new date_type();
                     date.date();
                     Console.WriteLine(date.datetext);
-                    CCalendar calendar = new CCalendar(DateTime.Now);
-                    string schedule = calendar.checkSchedule();
-                    Console.WriteLine(schedule);
                     
                     MLogin login = new MLogin();
                     login.signorlogin();

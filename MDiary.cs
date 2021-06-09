@@ -5,6 +5,7 @@ namespace gate_prjct
 {
     public class MDiary
     {
+        public string uName;
         public void menu(){
             int option = 0;
             while (option != -1)

@@ -3,12 +3,16 @@ namespace gate_prjct
 {
     public class MMenu
     {
+        public string uName;
         public void menu(){
             int input = 0;
                 while (input != -1)
                 {
                     Console.WriteLine("\n----------------------------------------------------");
-                    Console.WriteLine("GATE's Menu:\n(1) My Diary\n(2) My Schedule\n(3) My Dictionary\n(-1) Logout");
+                    CCalendar calendar = new CCalendar(DateTime.Now);
+                    string schedule = calendar.checkSchedule();
+                    Console.WriteLine(schedule);
+                    Console.WriteLine("\nGATE's Menu:\n(1) My Diary\n(2) My Schedule\n(3) My Dictionary\n(-1) Logout");
                     Console.WriteLine("----------------------------------------------------\n");
                     Console.WriteLine("Input Your Choice: ");
                     try{
@@ -39,10 +43,12 @@ namespace gate_prjct
         }
         private void mdiary(){
             MDiary diary = new MDiary();
+            diary.uName = uName;
             diary.menu();
         }
         private void mschedule(){
             MCalendar calendar = new MCalendar();
+            calendar.uName = uName;
             calendar.menu();
         }
         private void mdictionary(){

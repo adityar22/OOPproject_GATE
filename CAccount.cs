@@ -58,7 +58,7 @@ namespace gate_prjct
             if(login.HasRows){
                 command.Cancel();
                 login.Close();
-                mlogin.succeslogin();
+                mlogin.succeslogin(username);
             }else{
                 command.Cancel();
                 login.Close();

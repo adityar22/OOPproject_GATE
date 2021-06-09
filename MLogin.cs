@@ -46,10 +46,12 @@ namespace gate_prjct
             Console.WriteLine("Login Gagal!");
             mlogin();
         }
-        public void succeslogin(){
+        public void succeslogin(string uname){
             Console.WriteLine("\nLogin Berhasil!");
+            Console.WriteLine("Hi, "+uname);
             
             MMenu menu = new MMenu();
+            menu.uName = uname;
             menu.menu();
         }
         public void msignup(){
