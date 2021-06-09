@@ -26,6 +26,8 @@ namespace gate_prjct
                     MLogin login = new MLogin();
                     login.signorlogin();
 
+                    data.connection.Close();
+                    Console.WriteLine("Connection is "+data.connection.State.ToString() + Environment.NewLine);
                 }
                 catch (MySql.Data.MySqlClient.MySqlException ex)
                 {
@@ -37,13 +39,6 @@ namespace gate_prjct
                     Console.ReadKey();
                 }
             }  
-        }
-        public void close(){
-            connect data = new connect();
-            data.connection.Close();
-            Console.WriteLine("Connection is "+data.connection.State.ToString() + Environment.NewLine);
-            Console.WriteLine("Press any key to exit...");
-            Console.ReadKey();
         }
     }
 }
