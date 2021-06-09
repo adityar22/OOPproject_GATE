@@ -7,7 +7,7 @@ namespace gate_prjct
     {
         public void signorlogin(){
             int option = 0;
-            Console.WriteLine("1) Login\n2) Signup\n-1) Exit");
+            Console.WriteLine("\n1) Login\n2) Signup\n-1) Exit");
             try{
                 Console.WriteLine("Input your choice: ");
                 option = Convert.ToInt32(Console.ReadLine());
@@ -20,10 +20,9 @@ namespace gate_prjct
                         msignup();
                         break;
                     case -1:
-                        Program exit = new Program();
-                        exit.close();
                         break;
                     default:
+                        Console.WriteLine("Please input a valid option");
                         break;
                 }
             }catch{

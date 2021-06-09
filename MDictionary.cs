@@ -22,7 +22,10 @@ namespace gate_prjct
                         case 2:
                             synonym();
                             break;
+                        case -1:
+                            break;
                         default:
+                            Console.WriteLine("Please input a valid option");
                             break;
                     }
                 }

@@ -9,7 +9,7 @@ namespace gate_prjct
             int option = 0;
             while (option != -1)
             {
-                Console.WriteLine("Gate's Day Menu");
+                Console.WriteLine("\nGate's Day Menu");
                 Console.WriteLine("1) Write Diary;\n2) Search Diary\n3) Show List Diary;\n-1) Home");
                 try
                 {
@@ -27,12 +27,9 @@ namespace gate_prjct
                             showDiary();
                             break;
                         case -1:
-                            MMenu mmenu = new MMenu();
-                            mmenu.menu();
                             break;
                         default:
                             Console.WriteLine("Input a valid option!");
-                            menu();
                             break;
                     } 
                 }
