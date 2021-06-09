@@ -7,7 +7,9 @@ namespace gate_prjct
             int input = 0;
                 while (input != -1)
                 {
+                    Console.WriteLine("\n----------------------------------------------------");
                     Console.WriteLine("GATE's Menu:\n(1) My Diary\n(2) My Schedule\n(3) My Dictionary\n(-1) Logout");
+                    Console.WriteLine("----------------------------------------------------\n");
                     Console.WriteLine("Input Your Choice: ");
                     try{
                         input = Convert.ToInt32(Console.ReadLine());
